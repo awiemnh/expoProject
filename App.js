@@ -46,6 +46,7 @@ const App = () => {
 
   return (
     <View style={styles.container}>
+      <Text>Timer keren cuy</Text>
       <Text style={styles.timer}>{formatTime(elapsedTime)}</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleStartPausePress}>
