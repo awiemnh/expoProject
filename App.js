@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const BiodataTemplate = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Biodata</Text>
+      <Text style={styles.header}>Biodata---awdawdawd</Text>
       <View style={styles.section}>
         <Text style={styles.label}>Nama:</Text>
         <Text style={styles.value}>John Doe</Text>
