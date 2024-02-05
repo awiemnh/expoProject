@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Animated,
-  Easing,
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const TimerApp = () => {
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const animatedValue = new Animated.Value(0);
 
   useEffect(() => {
     let interval;
@@ -27,42 +19,20 @@ const TimerApp = () => {
 
   const startTimer = () => {
     setIsRunning(true);
-    Animated.timing(animatedValue, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-      easing: Easing.linear,
-    }).start();
   };
 
   const stopTimer = () => {
     setIsRunning(false);
-    Animated.timing(animatedValue).stop();
   };
 
   const resetTimer = () => {
     setSeconds(0);
     setIsRunning(false);
-    Animated.timing(animatedValue).stop();
-    animatedValue.setValue(0);
-  };
-
-  const animatedStyle = {
-    transform: [
-      {
-        scale: animatedValue.interpolate({
-          inputRange: [0, 0.5, 1],
-          outputRange: [1, 1.2, 1],
-        }),
-      },
-    ],
   };
 
   return (
     <View style={styles.container}>
-      <Animated.Text style={[styles.timerText, animatedStyle]}>
-        {seconds} seconds
-      </Animated.Text>
+      <Text style={styles.timerText}>{seconds} seconds</Text>
       <View style={styles.buttonContainer}>
         {!isRunning ? (
           <TouchableOpacity style={styles.button} onPress={startTimer}>
@@ -86,20 +56,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "linear-gradient(to right, #3498db, #2ecc71)",
   },
   timerText: {
-    fontSize: 48,
+    fontSize: 24,
     marginBottom: 20,
-    color: "white",
   },
   buttonContainer: {
     flexDirection: "row",
   },
   button: {
-    backgroundColor: "#e74c3c",
-    paddingVertical: 15,
-    paddingHorizontal: 30,
+    backgroundColor: "#3498db",
+    padding: 15,
     borderRadius: 10,
     marginHorizontal: 10,
   },
